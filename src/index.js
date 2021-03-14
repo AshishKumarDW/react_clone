@@ -1,6 +1,8 @@
 import ApnaReact from "./apna-react";
 import ApnaReactDom from "./apna-react-dom";
 
+import Counter from "./counter";
+
 const WelcomeMsg = ({ firstName, secondName }) => (
     <p>
         Welcome {firstName} {secondName}
@@ -13,6 +15,7 @@ const App = (
             <p>This is our React Implementation</p>
         </div>
         <WelcomeMsg firstName={"Ashish"} secondName={"Kumar"} />
+        <Counter />
     </div>
 );
 
