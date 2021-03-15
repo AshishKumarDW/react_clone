@@ -7,12 +7,6 @@ class Counter extends ApnaReact.Component {
         this.state = {
             count: 0,
         };
-
-        setInterval(() => {
-            this.setState({
-                count: this.state.count + 1,
-            });
-        }, 1000);
     }
 
     ComponentDidMount() {
@@ -20,7 +14,20 @@ class Counter extends ApnaReact.Component {
     }
 
     render() {
-        return <p>Count: {this.state.count}</p>;
+        return (
+            <div>
+                <p>Count: {this.state.count}</p>
+                <button
+                    onClick={() =>
+                        this.setState({
+                            count: this.state.count + 1,
+                        })
+                    }
+                >
+                    Increment
+                </button>
+            </div>
+        );
     }
 }
 

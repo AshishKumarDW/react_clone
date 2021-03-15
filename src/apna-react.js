@@ -6,6 +6,12 @@ const createElement = (type, props, ...children) => {
 
         componentInstance.__vNode = componentInstance.render();
 
+        componentInstance.__vNode.data.hook = {
+            create: () => {
+                componentInstance.ComponentDidMount();
+            },
+        };
+
         return componentInstance.__vNode;
     }
 
@@ -13,7 +19,19 @@ const createElement = (type, props, ...children) => {
         return type(props);
     }
 
-    return h(type, { props }, children);
+    props = props || {};
+    let dataProps = {};
+    let eventProps = {};
+
+    for (let propKey in props) {
+        if (propKey.startsWith("on")) {
+            const event = propKey.substring(2).toLowerCase();
+            eventProps[event] = props[propKey];
+        } else {
+            dataProps[propKey] = props[propKey];
+        }
+    }
+    return h(type, { props: dataProps, on: eventProps }, children);
 };
 
 class Component {

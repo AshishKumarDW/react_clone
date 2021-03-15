@@ -1,8 +1,9 @@
 import ApnaReact from "./apna-react";
 import * as snabbdom from "snabbdom";
 import propsModule from "snabbdom/modules/props";
+import eventlistenersModule from "snabbdom/modules/eventlisteners";
 
-const reconcile = snabbdom.init([propsModule]);
+const reconcile = snabbdom.init([propsModule, eventlistenersModule]);
 
 let rootNode;
 
